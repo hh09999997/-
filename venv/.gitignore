@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+
+# Django static/media
+staticfiles/
+media/
+
+# Virtual environment
+venv/
+.env
+*.env
+
+# VS Code
+.vscode/
+
+# Byte-compiled / temporary files
+*.log
+*.pot
+*.pyc
+*~
+.DS_Store
+
+# Node (if used)
+node_modules/
