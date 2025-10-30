@@ -1,3 +1,10 @@
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+
+
+
 from pathlib import Path
 
 # ----------------------------------------------------------
@@ -29,6 +36,13 @@ INSTALLED_APPS = [
     'shop.apps.ShopConfig',
     'dashboard.apps.DashboardConfig',
 ]
+
+INSTALLED_APPS += [
+    'cloudinary',
+    'cloudinary_storage',
+]
+
+
 
 # ----------------------------------------------------------
 # ⚙️ الطبقات الوسيطة (Middleware)
@@ -103,6 +117,18 @@ TIME_ZONE = 'Asia/Riyadh'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
+
+
+# ✅ إعدادات Cloudinary
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv("CLOUDINARY_CLOUD_NAME"),
+    'API_KEY': os.getenv("CLOUDINARY_API_KEY"),
+    'API_SECRET': os.getenv("CLOUDINARY_API_SECRET"),
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
 
 # ----------------------------------------------------------
 # 🖼️ الملفات الثابتة والإعلامية
