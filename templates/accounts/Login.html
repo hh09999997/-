@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 style="text-align:center">🔐 تسجيل الدخول</h2>
+
+<form method="POST" style="max-width:400px;margin:auto;">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit"
+            style="background:#4CAF50;border:none;color:white;padding:10px 20px;
+                   border-radius:8px;font-size:16px;cursor:pointer;width:100%;">
+        دخول ✅
+    </button>
+</form>
+
+<p style="text-align:center;margin-top:10px;">
+    جديد هنا؟ <a href="{% url 'account:signup' %}">إنشاء حساب</a>
+</p>
+
+{% endblock %}

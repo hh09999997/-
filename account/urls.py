@@ -1,7 +1,9 @@
 from django.urls import path
+from .views import signup_view, login_view
 
 app_name = "account"
 
 urlpatterns = [
-    # لاحقًا نضيف مسارات تسجيل الدخول، التسجيل، البروفايل...
+    path("signup/", signup_view, name="signup"),
+    path("login/", login_view, name="login"),
 ]
