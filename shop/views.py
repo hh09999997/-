@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
 def home(request):
-    return HttpResponse("مرحبًا بك في متجر المجلات ✅")
+    return render(request, 'shop/home.html')  # ✅ يعرض الصفحة مع الهيدر والفوتر

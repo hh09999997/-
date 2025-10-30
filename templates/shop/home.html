@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}الرئيسية{% endblock %}
+
+{% block content %}
+
+<style>
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+    background: #FFF7CC;
+    border-bottom: 4px dashed #FDBA74;
+    font-family: 'Cairo', sans-serif;
+}
+.hero h1 {
+    font-size: 40px;
+    color: #FF6B6B;
+}
+.hero p {
+    font-size: 20px;
+    color: #444;
+}
+.mag-img {
+    width: 200px;
+    margin-top: 20px;
+}
+</style>
+
+<section class="hero">
+    <h1>👋 أهلاً بكم في عالم مجلة طفلي!</h1>
+    <p>مجلات ملونة، قصص ممتعة، ورسومات تلوين! ✨🎨📚</p>
+    <img class="mag-img" src="https://cdn-icons-png.flaticon.com/512/590/590767.png">
+</section>
+
+{% endblock %}
