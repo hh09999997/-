@@ -29,6 +29,28 @@ nav a {
 nav a:hover {
     color: #FFD700;
 }
+.auth-buttons a {
+    padding: 8px 14px;
+    margin-left: 8px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.btn-login {
+    background: #FFD700;
+    color: #000;
+}
+.btn-login:hover {
+    background: #fff;
+}
+.btn-signup {
+    background: #ff6fb5;
+    color: #fff;
+}
+.btn-signup:hover {
+    background: #fff;
+    color: #ff6fb5;
+}
 </style>
 
 <header>
@@ -44,4 +66,9 @@ nav a:hover {
         <a href="#">📝 قصص قصيرة</a>
         <a href="#">📞 تواصل معنا</a>
     </nav>
+
+    <div class="auth-buttons">
+        <a href="/account/login" class="btn-login">🔑 تسجيل دخول</a>
+        <a href="/account/signup" class="btn-signup">✨ إنشاء حساب</a>
+    </div>
 </header>
