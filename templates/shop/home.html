@@ -33,3 +33,25 @@
 </section>
 
 {% endblock %}
+
+
+<section style="text-align:center; margin-top:40px;">
+    <h2>📚 قائمة المجلات</h2>
+    <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:20px; margin-top:20px;">
+        {% for magazine in magazines %}
+            <div style="background:#fff; width:220px; border-radius:15px; box-shadow:0 4px 8px rgba(0,0,0,0.1); overflow:hidden;">
+                {% if magazine.cover %}
+                    <img src="{{ magazine.cover.url }}" alt="{{ magazine.title }}" style="width:100%; height:220px; object-fit:cover;">
+                {% else %}
+                    <div style="background:#eee; width:100%; height:220px; display:flex; align-items:center; justify-content:center; color:#999;">لا يوجد صورة</div>
+                {% endif %}
+                <div style="padding:10px;">
+                    <h3 style="font-size:18px; margin:5px 0;">{{ magazine.title }}</h3>
+                    <p style="color:#333;">السعر: {{ magazine.price }} ريال</p>
+                </div>
+            </div>
+        {% empty %}
+            <p>لا توجد مجلات حالياً.</p>
+        {% endfor %}
+    </div>
+</section>

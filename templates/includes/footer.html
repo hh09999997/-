@@ -8,18 +8,52 @@ footer {
     font-family: 'Cairo', sans-serif;
     color: #fff;
 }
+
+/* تحسين مظهر الأيقونات */
 .footer-icons img {
-    width: 32px;
-    margin: 5px;
+    width: 28px;
+    height: 28px;
+    margin: 6px;
+    transition: transform 0.25s ease-in-out;
+    border-radius: 8px;
+}
+
+/* حركة عند المرور */
+.footer-icons img:hover {
+    transform: scale(1.25);
+    box-shadow: 0 0 6px rgba(255,255,255,0.8);
 }
 </style>
 
 <footer>
     <div>💖 شكراً لزيارتكم متجر مجلة طفلي</div>
+
     <div class="footer-icons">
-        <img src="https://cdn-icons-png.flaticon.com/512/747/747374.png">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png">
-        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+        <!-- فيسبوك -->
+        <a href="https://facebook.com" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png">
+        </a>
+
+        <!-- يوتيوب -->
+        <a href="https://youtube.com" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+        </a>
+
+        <!-- انستقرام -->
+        <a href="https://instagram.com" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
+        </a>
+
+        <!-- TikTok -->
+        <a href="https://tiktok.com" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/3046/3046120.png">
+        </a>
+
+        <!-- Snapchat -->
+        <a href="https://snapchat.com" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/3670/3670147.png">
+        </a>
     </div>
+
     <small>© جميع الحقوق محفوظة 2025</small>
 </footer>

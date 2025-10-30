@@ -1,5 +1,5 @@
 from django.db import models
-from cloudinary.models import CloudinaryField  # ✅ استيراد CloudinaryField لاستخدام Cloudinary
+from cloudinary.models import CloudinaryField
 
 # 📂 تصنيفات المجلات
 class Category(models.Model):
@@ -24,20 +24,19 @@ class Magazine(models.Model):
     title = models.CharField(max_length=150, verbose_name="عنوان المجلة")
     price = models.DecimalField(max_digits=6, decimal_places=2, verbose_name="السعر")
 
-    # ✅ الغلاف يُرفع تلقائيًا إلى Cloudinary
+    # ✅ غلاف من Cloudinary
     cover = CloudinaryField(
-        'image',
+        'صورة الغلاف',
         folder='magazines/covers/',
-        verbose_name="غلاف المجلة",
         blank=True,
         null=True
     )
 
-    # ✅ الفيديو التعريفي يُرفع أيضًا إلى Cloudinary
+    # ✅ فيديو من Cloudinary
     preview_video = CloudinaryField(
-        'video',
+        'فيديو تعريفي',
         folder='magazines/videos/',
-        verbose_name="فيديو تعريفي",
+        resource_type='video',
         blank=True,
         null=True
     )
