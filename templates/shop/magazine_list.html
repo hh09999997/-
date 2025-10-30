@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="text-align:center; padding: 20px;">
+    <h2>📚 قائمة المجلات</h2>
+</div>
+
+<div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
+    {% for magazine in magazines %}
+    <div style="background:#fff; padding:10px; border-radius:10px; width:200px; text-align:center; box-shadow:0 0 5px rgba(0,0,0,0.2);">
+        {% if magazine.cover %}
+        <img src="{{ magazine.cover.url }}" style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
+        {% else %}
+        <div style="width:100%; height:200px; background:#ddd; border-radius:10px;"></div>
+        {% endif %}
+        
+        <h3>{{ magazine.title }}</h3>
+        <p><strong>{{ magazine.price }} ريال</strong></p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

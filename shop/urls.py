@@ -5,10 +5,5 @@ app_name = "shop"
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('magazines/', views.magazine_list, name='magazine_list'),
 ]
-
-
-from django.shortcuts import render
-
-def home(request):
-    return render(request, 'home.html')
