@@ -1,29 +1,27 @@
 import os
+from pathlib import Path
 from dotenv import load_dotenv
+
+# ✅ تحميل متغيرات البيئة من ملف .env
 load_dotenv()
 
-
-
-
-from pathlib import Path
-
 # ----------------------------------------------------------
-# 📂 المسار الأساسي للمشروع
+# 📂 BASE DIR
 # ----------------------------------------------------------
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ----------------------------------------------------------
-# 🔐 مفاتيح الأمان
+# 🔐 SECURITY
 # ----------------------------------------------------------
-SECRET_KEY = 'django-insecure-zx!sw56byy6@rz(aq+)0$i3su#rkhu0j%%9z6nqxr(xug-#0!h'
+SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret")
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 # ----------------------------------------------------------
-# 🧩 التطبيقات المثبتة
+# 🧩 INSTALLED APPS
 # ----------------------------------------------------------
 INSTALLED_APPS = [
-    # 🧱 تطبيقات Django الأساسية
+    # Django Core Apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -31,26 +29,23 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # 🌟 تطبيقات المشروع
+    # Project Apps
     'account.apps.AccountConfig',
     'shop.apps.ShopConfig',
     'dashboard.apps.DashboardConfig',
-]
 
-INSTALLED_APPS += [
+    # Cloudinary
     'cloudinary',
     'cloudinary_storage',
 ]
 
-
-
 # ----------------------------------------------------------
-# ⚙️ الطبقات الوسيطة (Middleware)
+# ⚙️ MIDDLEWARE
 # ----------------------------------------------------------
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',  # ✅ دعم اللغة العربية
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -58,20 +53,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# ----------------------------------------------------------
-# 📍 نظام عناوين URLs
-# ----------------------------------------------------------
 ROOT_URLCONF = 'mglh.urls'
 
 # ----------------------------------------------------------
-# 🎨 إعدادات القوالب Templates
+# 🎨 Templates
 # ----------------------------------------------------------
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            BASE_DIR / 'templates',  # ✅ مجلد القوالب الرئيسي
-        ],
+        'DIRS': [BASE_DIR / 'templates'],  # ✅ المجلد العام للقوالب
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -84,13 +74,10 @@ TEMPLATES = [
     },
 ]
 
-# ----------------------------------------------------------
-# 🚀 WSGI
-# ----------------------------------------------------------
 WSGI_APPLICATION = 'mglh.wsgi.application'
 
 # ----------------------------------------------------------
-# 🗄️ قاعدة البيانات (SQLite أثناء التطوير)
+# 🗄 DATABASE (SQLite for Development)
 # ----------------------------------------------------------
 DATABASES = {
     'default': {
@@ -100,7 +87,7 @@ DATABASES = {
 }
 
 # ----------------------------------------------------------
-# 🔐 التحقق من كلمات المرور
+# 🔐 Password Validators
 # ----------------------------------------------------------
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
@@ -110,16 +97,16 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # ----------------------------------------------------------
-# 🌍 اللغة والمنطقة الزمنية
+# 🌍 LANGUAGE & TIMEZONE
 # ----------------------------------------------------------
 LANGUAGE_CODE = 'ar'
 TIME_ZONE = 'Asia/Riyadh'
 USE_I18N = True
-USE_L10N = True
 USE_TZ = True
 
-
-# ✅ إعدادات Cloudinary
+# ----------------------------------------------------------
+# ☁️ Cloudinary Config
+# ----------------------------------------------------------
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.getenv("CLOUDINARY_CLOUD_NAME"),
     'API_KEY': os.getenv("CLOUDINARY_API_KEY"),
@@ -128,21 +115,25 @@ CLOUDINARY_STORAGE = {
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-
+import cloudinary
+cloudinary.config(
+    cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.getenv("CLOUDINARY_API_KEY"),
+    api_secret=os.getenv("CLOUDINARY_API_SECRET"),
+    secure=True,
+)
 
 # ----------------------------------------------------------
-# 🖼️ الملفات الثابتة والإعلامية
+# 🖼 Static & Media Files
 # ----------------------------------------------------------
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',  # ✅ مجلد التطوير
-]
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # ✅ مجلد جمع الملفات للنشر (collectstatic)
+STATICFILES_DIRS = [BASE_DIR / 'static']  # 📂 التطوير
+STATIC_ROOT = BASE_DIR / 'staticfiles'   # 📦 النشر
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # ----------------------------------------------------------
-# 🧱 الإعداد الافتراضي
+# 🧱 Default Field
 # ----------------------------------------------------------
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

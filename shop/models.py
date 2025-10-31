@@ -24,17 +24,17 @@ class Magazine(models.Model):
     title = models.CharField(max_length=150, verbose_name="عنوان المجلة")
     price = models.DecimalField(max_digits=6, decimal_places=2, verbose_name="السعر")
 
-    # ✅ غلاف من Cloudinary
+    # ✅ غلاف المجلة عبر Cloudinary
     cover = CloudinaryField(
-        'صورة الغلاف',
+        verbose_name='غلاف المجلة',
         folder='magazines/covers/',
         blank=True,
         null=True
     )
 
-    # ✅ فيديو من Cloudinary
+    # ✅ فيديو تعريفي عبر Cloudinary
     preview_video = CloudinaryField(
-        'فيديو تعريفي',
+        verbose_name='فيديو تعريفي',
         folder='magazines/videos/',
         resource_type='video',
         blank=True,
